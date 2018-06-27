@@ -91,7 +91,7 @@ public class MarcaServlet extends HttpServlet {
 				res.setValor(rest);
 			} else {
 				res.setCodigo("2002");
-				res.setDescripcion("Opción no disponible");
+				res.setDescripcion("Opcion no disponible");
 			}
 			res.setCodigo("2000");
 		} catch (Exception e) {
