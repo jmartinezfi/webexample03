@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Categoria Form</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-default" role="navigation" id="idCabecera">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Bienvenido </a>
+			</div>
+			<div class="navbar-collapse collapse">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">Cerrar</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+		<!-- Inicio de cuerpo de la pagina style="display: none; position: absolute;z-index: 20;" -->
+		<div class="row">
+			<div id="msg" class="alert"
+				style="display: none; position: absolute; z-index: 20; width: 90%;">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Success!</strong> Indicates a successful or positive action.
+			</div>
+		</div>
+		<div>
+			<!-- formulario de busqueda -->
+			<div>
+				<div id="busqueda">
+					<div>
+						<form method="post" id="formBusqueda">
+							<div class="form-group row">
+								<label for="lbBusqueda" class="col-sm-2 col-form-label">Busqueda:</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="lbBusqueda"
+										placeholder="Ingrese valor de Busqueda" value="" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12 botones">
+									<button type="submit" class="btn" id="btnBuscar">Buscar</button>
+									<button type="button" class="btn" id="limpiarLista"
+										onClick="return Clickbtn_Limpiar();">Limpiar</button>
+									<button type="button" class="btn" id="btnNuevo"
+										onClick="return Clickbtn_Nuevo();">Nuevo</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Codigo</th>
+									<th scope="col">Nombre</th>
+									<th scope="col">Descripcion</th>
+									<th scope="col">Detalle</th>
+									<th scope="col">Acción</th>
+								</tr>
+							</thead>
+							<tbody id="listado">
+							</tbody>
+						</table>
+						<nav aria-label="Page navigation example">
+							<ul class="pagination justify-content-end">
+								<li class="page-item disabled"><a class="page-link"
+									href="#" tabindex="-1">Previous</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">Next</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- formulario de edicion -->
+			<div>
+				<div id="datos">
+					<form method="post" id="formEnviar">
+					<input type="hidden" class="form-control" id="accion" value="" />
+					<div class="form-group row">
+						<label for="IdCodigo" class="col-sm-2 col-form-label">Codigo</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="IdCodigo"
+								placeholder="Codigo" value=""  disabled  />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="IdNombre" class="col-sm-2 col-form-label">Nombre</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="IdNombre"
+								placeholder="Nombre" value=""  required maxlength="100"  />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="IdDescripcion" class="col-sm-2 col-form-label">Descripcion</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="IdDescripcion"
+								placeholder="Descripcion" value=""   maxlength="200"  />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="IdDetalle" class="col-sm-2 col-form-label">Detalle</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="IdDetalle"
+								placeholder="Detalle" value=""   maxlength="100"  />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="IdEstado" class="col-sm-2 col-form-label">Estado</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="IdEstado"
+								placeholder="Estado" value=""   maxlength="100"  />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" class="btn" id="btnEnviar"
+								 value="Enviar">
+						</div>
+						<div class="col-sm-6">
+							<input type="button" class="btn" id="btnRegresar"
+								onClick="return Clickbtn_Regresar();" value="Regresar">
+						</div>
+					</div>
+				</form></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" align="center" style="border-top: 1px solid">
+				<br> Copyright &copy; jucamafi09
+			</div>
+		</div>
+		<div class="modal fade" id="mdEliminar">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Eliminar</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<!-- Modal body -->
+					<div class="modal-body" id="modalBody">Eliminar el elemento
+						XYZ</div>
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success"
+							onClick="return Clickbtn_EliminarDB();">Guardar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function buscar() {
+			var lbBusqueda = $('#lbBusqueda').val();
+			console.log("valor de busqueda: " + lbBusqueda);
+			try {
+				$.ajax({
+					url : "CategoriaServlet",
+					data : "a=l&lbBusqueda=" + lbBusqueda,
+					type : "POST"
+				}).done(function(json) {
+					if (json != null) {
+						console.log("salida: " + json.descripcion);
+						if (json.html == null) {
+							$('#listado').html("");
+						} else {
+							$('#listado').html(json.html);
+						}
+					} else {
+						console.log("Error al obtener resultados");
+					}
+				}).fail(function(xhr, status, errorThrown) {
+					alertP("Error! Problemas al Terminar");
+				}).always(function(xhr, status) {
+				});
+			} catch (e) {
+				alertP(e);
+			}
+		}
+		function Clickbtn_Regresar() {
+			$('#datos').hide();
+			//busqueda
+			$('#busqueda').show();
+		}
+
+		function Clickbtn_Editar(codigo) {
+			try {
+				$.ajax({
+					url : "CategoriaServlet",
+					data : "a=o&codigo=" + codigo,
+					type : "POST"
+				}).done(function(json) {
+					if (json != null) {
+						console.log("salida: " + json.descripcion);
+						if (json.codigo == '2000') {
+							if (json.valor != null) {
+								$('#IdCodigo').val(json.valor.codigo);
+								$('#IdNombre').val(json.valor.nombre);
+								$('#IdDescripcion').val(json.valor.descripcion);
+								$('#IdDetalle').val(json.valor.detalle);
+								$('#IdEstado').val(json.valor.estado);
+							} else {
+								alertE(json.descripcion);
+							}
+						} else {
+							alertE(json.descripcion);
+						}
+					} else {
+						console.log("Error al obtener resultados");
+					}
+				}).fail(function(xhr, status, errorThrown) {
+					alertP("Error! Problemas al Terminar");
+				}).always(function(xhr, status) {
+				});
+			} catch (e) {
+				alertP(e);
+			}
+			$('#datos').show();
+			//busqueda
+			$('#busqueda').hide();
+			$('#accion').val('U')
+
+		}
+		function Clickbtn_Nuevo() {
+			$('#datos').show();
+			//busqueda
+			$('#busqueda').hide();
+			$('#accion').val('N');
+								$('#IdCodigo').val('');
+								$('#IdNombre').val('');
+								$('#IdDescripcion').val('');
+								$('#IdDetalle').val('');
+								$('#IdEstado').val('');
+		}
+		function Clickbtn_Limpiar() {
+			$('#datos').hide();
+			$('#lbBusqueda').val('');
+			$('#listado').html("");
+		}
+		function Clickbtn_Eliminar(codigo) {
+			$('#IdCodigo').val(codigo);
+			$('#modalBody').html("Se eliminará el elemento " + codigo);
+			$("#mdEliminar").modal();
+		}
+
+		function Clickbtn_EliminarDB() {
+			try {
+				$.ajax({
+					url : "CategoriaServlet",
+					data : "a=d&codigo=" + $('#IdCodigo').val(),
+					type : "POST"
+				}).done(function(json) {
+					if (json != null) {
+						console.log("salida: " + json.descripcion);
+						if (json.codigo == '2000') {
+							console.log("conforme");
+							alertP(json.descripcion);
+						} else {
+							alertE(json.descripcion);
+						}
+					} else {
+						console.log("Error al obtener resultados");
+					}
+				}).fail(function(xhr, status, errorThrown) {
+					alertE("Error! Problemas al Terminar");
+				}).always(function(xhr, status) {
+				});
+			} catch (e) {
+				alertE(e);
+			}
+			$("#mdEliminar").modal("hide");
+		}
+		function alertP(mensaje) {
+			console.log(mensaje);
+			$("#msg").addClass("alert-success");
+			$("#msg").html(mensaje);
+			$("#msg").fadeIn();
+			$("#msg").fadeOut(3000);
+		}
+		function alertE(mensaje) {
+			console.log(mensaje);
+			$("#msg").addClass("alert-danger");
+			$("#msg").html(mensaje);
+			$("#msg").fadeIn();
+			$("#msg").fadeOut(3000);
+		}
+
+		function Clickbtn_Enviar() {
+			try {
+				$.ajax(
+						{
+							url : "CategoriaServlet",
+							data : "a=" + $('#accion').val() 
+							+ "&codigo="+ $('#IdCodigo').val()
+							+ "&nombre="+ $('#IdNombre').val()
+							+ "&descripcion="+ $('#IdDescripcion').val()
+							+ "&detalle="+ $('#IdDetalle').val()
+							+ "&estado="+ $('#IdEstado').val()
+							,type : "POST"
+						}).done(function(json) {
+					if (json != null) {
+						console.log("salida: " + json.descripcion);
+						//
+						if (json.codigo == '2000') {
+							//Agregar modal automatico para confirmación y cerrarlo
+							alertP(json.descripcion);
+							buscar();
+							Clickbtn_Regresar();
+						} else {
+							alertE(json.descripcion);
+						}
+					} else {
+						console.log("Error al obtener resultados");
+					}
+				}).fail(function(xhr, status, errorThrown) {
+					alertP("Error! Problemas al Terminar");
+				}).always(function(xhr, status) {
+				});
+
+			} catch (e) {
+				alertP(e);
+			}
+		}
+		$(document).ready(function() {
+			$('#datos').hide();
+			$('#formBusqueda').submit(function(event) {
+				buscar();
+				event.preventDefault();
+			});
+			$('#formEnviar').submit(function(event) {
+				Clickbtn_Enviar();
+				event.preventDefault();
+			});
+		});
+	</script>
+</body>
+</html>
