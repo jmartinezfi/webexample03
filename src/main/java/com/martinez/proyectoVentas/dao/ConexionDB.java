@@ -4,14 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConexionDB {
+	
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://localhost/mys.ventas"; 
 
+	// Database credentials
+	static final String USER = "root";
+	static final String PASS = "sistemas";
+	
+	/**
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://o677vxfi8ok6exrd.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/dh7m0ekzd0t0ltuy?sslmode=require"; 
 
 	// Database credentials
 	static final String USER = "snacp4rfodcyowgt";
 	static final String PASS = "kswpoab7vjfsg027";
-
+	*/
 	public Connection getConexion() {
 		Connection conn = null;
 		try {
